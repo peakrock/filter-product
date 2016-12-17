@@ -16,4 +16,8 @@ public class Product {
     public Color getColor() {
         return color;
     }
+
+    public int getWeight() {
+        return weight;
+    }
 }

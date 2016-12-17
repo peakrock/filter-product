@@ -21,4 +21,15 @@ public class Filter {
         return results;
     }
 
+    public List<Product> findLtWeight(List<Product> products, int weight) {
+        List<Product> results = new ArrayList<>();
+        for (Product p: products) {
+            if (p.getWeight() <  weight){
+                results.add(p);
+            }
+
+        }
+        return results;
+
+    }
 }

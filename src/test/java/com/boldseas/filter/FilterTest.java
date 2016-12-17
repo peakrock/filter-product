@@ -60,4 +60,13 @@ public class FilterTest {
     }
 
 
+    @Test
+    public void whenFindLtWeight10ThenReturn2Products(){
+        //when
+
+        List<Product> results = filter.findLtWeight(products,10);
+        //then
+        assertThat(results.size(),is(2));
+    }
+
 }
