@@ -12,7 +12,7 @@ public interface ProductSpec {
     static ProductSpec ltWeight(int weight){
         return p -> p.getWeight() < weight;
     }
-    static ProductSpec and(ProductSpec... specs){
+    default ProductSpec and(ProductSpec... specs){
         return p -> {
             for (ProductSpec spec: specs) {
                 if (!spec.satisfy(p)){
@@ -22,7 +22,7 @@ public interface ProductSpec {
             return true;
         };
     }
-    static ProductSpec or(ProductSpec... specs){
+    default ProductSpec or(ProductSpec... specs){
         return p -> {
             for (ProductSpec spec: specs) {
                 if (spec.satisfy(p)){
@@ -33,8 +33,8 @@ public interface ProductSpec {
         };
     }
 
-    static ProductSpec not(ProductSpec spec){
-        return p -> !spec.satisfy(p);
+    default ProductSpec not(){
+        return p -> satisfy(p);
     }
 
     static ProductSpec always(boolean bool){

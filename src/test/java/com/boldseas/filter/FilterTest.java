@@ -74,16 +74,14 @@ public class FilterTest {
     public void whenFindRedOrGreenAndLtWeight10ThenReturn2Products(){
         //when
 
-        List<Product> results = filter.findBySpec(products,and(
-                or(color(RED),color(GREEN)),
-                        ltWeight(10)));
+        List<Product> results = filter.findBySpec(products,color(RED).or(color(GREEN)).and(ltWeight(10)));
         //then
         assertThat(results.size(),is(2));
     }
 
     @Test
     public void whenFindNotRedThenReturn2Products(){
-        List<Product> results = filter.findBySpec(products,not(color(RED)));
+        List<Product> results = filter.findBySpec(products,color(RED).not());
         //then
         assertThat(results.size(),is(2));
     }
