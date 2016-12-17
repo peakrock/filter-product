@@ -87,4 +87,15 @@ public class FilterTest {
         assertThat(results.size(),is(2));
     }
 
+    @Test
+    public void whenFindAllOrNoneThenReturn4Or0Products(){
+        List<Product> results = filter.findBySpec(products,new AlwaysSpec(true));
+        //then
+        assertThat(results.size(),is(4));
+
+        results = filter.findBySpec(products,new AlwaysSpec(false));
+        //then
+        assertThat(results.size(),is(0));
+    }
+
 }
