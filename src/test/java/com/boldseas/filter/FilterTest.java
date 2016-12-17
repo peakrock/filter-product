@@ -1,5 +1,6 @@
 package com.boldseas.filter;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -16,21 +17,29 @@ import static org.junit.Assert.*;
  */
 public class FilterTest {
 
-    @Test
-    public void given4ProductsWhenFindRedThenReturn2Products(){
+
+    private List<Product> products;
+    private Filter filter;
+
+    @Before
+    public void given(){
+
         //given
         Product product1 = new Product(RED,10);
         Product product2 = new Product(GREEN,4);
         Product product3 = new Product(RED,5);
         Product product4 = new Product(BLUE,12);
 
-        List<Product> products = Arrays.asList(product1,product2,product3,product4);
+        products = Arrays.asList(product1,product2,product3,product4);
 
-        Filter filter = new Filter();
+        filter = new Filter();
+    }
+    @Test
+    public void given4ProductsWhenFindRedThenReturn2Products(){
 
         //when
 
-        List<Product> results = filter.findRed(products);
+        List<Product> results = filter.findByColor(products,RED);
         //then
         assertThat(results.size(),is(2));
 
@@ -40,19 +49,9 @@ public class FilterTest {
 
     @Test
     public void given4ProductsWhenFindGreenThenReturn1Products(){
-        //given
-        Product product1 = new Product(RED,10);
-        Product product2 = new Product(GREEN,4);
-        Product product3 = new Product(RED,5);
-        Product product4 = new Product(BLUE,12);
-
-        List<Product> products = Arrays.asList(product1,product2,product3,product4);
-
-        Filter filter = new Filter();
-
         //when
 
-        List<Product> results = filter.findGreen(products);
+        List<Product> results = filter.findByColor(products,GREEN);
         //then
         assertThat(results.size(),is(1));
 

@@ -10,10 +10,10 @@ import static com.boldseas.filter.Color.RED;
  * Created by jerry on 12/17/16.
  */
 public class Filter {
-    public List<Product> findRed(List<Product> products) {
+    public List<Product> findByColor(List<Product> products, Color color) {
         List<Product> results = new ArrayList<>();
         for (Product p: products) {
-            if (p.getColor()== RED){
+            if (p.getColor()== color){
                 results.add(p);
             }
 
@@ -21,15 +21,4 @@ public class Filter {
         return results;
     }
 
-    public List<Product> findGreen(List<Product> products) {
-
-        List<Product> results = new ArrayList<>();
-        for (Product p: products) {
-            if (p.getColor()== GREEN){
-                results.add(p);
-            }
-
-        }
-        return results;
-    }
 }
