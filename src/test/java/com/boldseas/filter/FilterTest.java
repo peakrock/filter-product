@@ -9,6 +9,7 @@ import java.util.List;
 import static com.boldseas.filter.Color.BLUE;
 import static com.boldseas.filter.Color.GREEN;
 import static com.boldseas.filter.Color.RED;
+import static com.boldseas.filter.ProductSpecs.*;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
@@ -39,7 +40,7 @@ public class FilterTest {
 
         //when
 
-        List<Product> results = filter.findBySpec(products,new ColorSpec(RED));
+        List<Product> results = filter.findBySpec(products,color(RED));
         //then
         assertThat(results.size(),is(2));
 
@@ -51,7 +52,7 @@ public class FilterTest {
     public void given4ProductsWhenFindGreenThenReturn1Products(){
         //when
 
-        List<Product> results = filter.findBySpec(products,new ColorSpec(GREEN));
+        List<Product> results = filter.findBySpec(products,color(GREEN));
         //then
         assertThat(results.size(),is(1));
 
@@ -64,7 +65,7 @@ public class FilterTest {
     public void whenFindLtWeight10ThenReturn2Products(){
         //when
 
-        List<Product> results = filter.findBySpec(products,new LtWeight(10));
+        List<Product> results = filter.findBySpec(products,ltWeight(10));
         //then
         assertThat(results.size(),is(2));
     }
@@ -73,27 +74,27 @@ public class FilterTest {
     public void whenFindRedOrGreenAndLtWeight10ThenReturn2Products(){
         //when
 
-        List<Product> results = filter.findBySpec(products,new AndSpec(
-                new OrSpec(new ColorSpec(RED),new ColorSpec(GREEN)),
-                        new LtWeight(10)));
+        List<Product> results = filter.findBySpec(products,and(
+                or(color(RED),color(GREEN)),
+                        ltWeight(10)));
         //then
         assertThat(results.size(),is(2));
     }
 
     @Test
     public void whenFindNotRedThenReturn2Products(){
-        List<Product> results = filter.findBySpec(products,new NotSpec(new ColorSpec(RED)));
+        List<Product> results = filter.findBySpec(products,not(color(RED)));
         //then
         assertThat(results.size(),is(2));
     }
 
     @Test
     public void whenFindAllOrNoneThenReturn4Or0Products(){
-        List<Product> results = filter.findBySpec(products,new AlwaysSpec(true));
+        List<Product> results = filter.findBySpec(products,always(true));
         //then
         assertThat(results.size(),is(4));
 
-        results = filter.findBySpec(products,new AlwaysSpec(false));
+        results = filter.findBySpec(products,always(false));
         //then
         assertThat(results.size(),is(0));
     }
