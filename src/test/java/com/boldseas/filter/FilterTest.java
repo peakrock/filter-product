@@ -80,4 +80,11 @@ public class FilterTest {
         assertThat(results.size(),is(2));
     }
 
+    @Test
+    public void whenFindNotRedThenReturn2Products(){
+        List<Product> results = filter.findBySpec(products,new NotSpec(new ColorSpec(RED)));
+        //then
+        assertThat(results.size(),is(2));
+    }
+
 }
