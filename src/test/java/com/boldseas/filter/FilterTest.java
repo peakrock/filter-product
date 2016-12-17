@@ -69,4 +69,13 @@ public class FilterTest {
         assertThat(results.size(),is(2));
     }
 
+    @Test
+    public void whenFindRedOrGreenAndLtWeight10ThenReturn2Products(){
+        //when
+
+        List<Product> results = filter.findBySpec(products,new ColorAndWeightSpec(RED,GREEN,10));
+        //then
+        assertThat(results.size(),is(2));
+    }
+
 }
