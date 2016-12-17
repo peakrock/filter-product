@@ -39,7 +39,7 @@ public class FilterTest {
 
         //when
 
-        List<Product> results = filter.findByColor(products,RED);
+        List<Product> results = filter.findBySpec(products,new ColorSpec(RED));
         //then
         assertThat(results.size(),is(2));
 
@@ -51,7 +51,7 @@ public class FilterTest {
     public void given4ProductsWhenFindGreenThenReturn1Products(){
         //when
 
-        List<Product> results = filter.findByColor(products,GREEN);
+        List<Product> results = filter.findBySpec(products,new ColorSpec(GREEN));
         //then
         assertThat(results.size(),is(1));
 
@@ -64,7 +64,7 @@ public class FilterTest {
     public void whenFindLtWeight10ThenReturn2Products(){
         //when
 
-        List<Product> results = filter.findLtWeight(products,10);
+        List<Product> results = filter.findBySpec(products,new LtWeight(10));
         //then
         assertThat(results.size(),is(2));
     }
