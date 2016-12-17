@@ -73,7 +73,9 @@ public class FilterTest {
     public void whenFindRedOrGreenAndLtWeight10ThenReturn2Products(){
         //when
 
-        List<Product> results = filter.findBySpec(products,new ColorAndWeightSpec(RED,GREEN,10));
+        List<Product> results = filter.findBySpec(products,new AndSpec(
+                new OrSpec(new ColorSpec(RED),new ColorSpec(GREEN)),
+                        new LtWeight(10)));
         //then
         assertThat(results.size(),is(2));
     }
