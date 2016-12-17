@@ -81,7 +81,7 @@ public class FilterTest {
 
     @Test
     public void whenFindNotRedThenReturn2Products(){
-        List<Product> results = filter.findBySpec(products,color(RED).not());
+        List<Product> results = filter.findBySpec(products,color(RED).negate());
         //then
         assertThat(results.size(),is(2));
     }

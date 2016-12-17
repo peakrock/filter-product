@@ -1,19 +1,21 @@
 package com.boldseas.filter;
 
+import java.util.function.Predicate;
+
 /**
  * Created by jerry on 12/17/16.
  */
-public interface ProductSpec extends Specification<Product> {
+public interface ProductSpec extends Predicate<Product> {
 
-    static Specification<Product> color(Color color){
+    static Predicate<Product> color(Color color){
         return p -> p.getColor() == color;
     }
-    static Specification<Product> ltWeight(int weight){
+    static Predicate<Product> ltWeight(int weight){
         return p -> p.getWeight() < weight;
     }
 
 
-    static Specification<Product> always(boolean bool){
+    static Predicate<Product> always(boolean bool){
         return p -> bool;
     }
 
