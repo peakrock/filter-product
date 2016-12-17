@@ -9,7 +9,7 @@ import java.util.List;
 import static com.boldseas.filter.Color.BLUE;
 import static com.boldseas.filter.Color.GREEN;
 import static com.boldseas.filter.Color.RED;
-import static com.boldseas.filter.ProductSpecs.*;
+import static com.boldseas.filter.ProductSpec.*;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
