@@ -3,6 +3,7 @@ package com.boldseas.filter;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.boldseas.filter.Color.GREEN;
 import static com.boldseas.filter.Color.RED;
 
 /**
@@ -13,6 +14,18 @@ public class Filter {
         List<Product> results = new ArrayList<>();
         for (Product p: products) {
             if (p.getColor()== RED){
+                results.add(p);
+            }
+
+        }
+        return results;
+    }
+
+    public List<Product> findGreen(List<Product> products) {
+
+        List<Product> results = new ArrayList<>();
+        for (Product p: products) {
+            if (p.getColor()== GREEN){
                 results.add(p);
             }
 
